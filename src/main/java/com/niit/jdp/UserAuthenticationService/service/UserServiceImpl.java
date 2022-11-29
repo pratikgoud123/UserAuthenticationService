@@ -45,4 +45,10 @@ public class UserServiceImpl implements IUserService{
     public Optional<User> getByUserId(int userId)  {
         return userRepository.findById(userId);
     }
+
+    @Override
+    public boolean deleteUserById(int userId) {
+        userRepository.deleteById(userId);
+        return true;
+    }
 }

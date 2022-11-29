@@ -11,4 +11,5 @@ public interface IUserService {
     public List<User> getAllUsers();
     public User loginCheck(String username, String password) throws UserNotFoundException;
     public Optional<User> getByUserId(int userId) ;
+    public boolean deleteUserById (int userId);
 }

@@ -56,4 +56,10 @@ public class UserController {
         return new ResponseEntity<>(userService.getByUserId(userId), HttpStatus.OK);
     }
 
+    @DeleteMapping("/api/vi/deleteById/{userId}")
+    public ResponseEntity<?> deleteById (@PathVariable int userId){
+        userService.deleteUserById(userId);
+        return new ResponseEntity<>("user record has been deleted", HttpStatus.OK);
+    }
+
 }

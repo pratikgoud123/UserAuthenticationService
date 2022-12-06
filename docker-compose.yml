@@ -1,0 +1,28 @@
+version: "1.0"
+services:
+  mysqlservice:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    container_name: mysqlcontainer1
+    networks:
+      - mynetwork1
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  restservice:
+    image: usercomposeimgage1
+    container_name: usercomposecontainer1
+    build: ./
+    restart: always
+    networks:
+      - mynetwork1
+    ports:
+      - 8089:8089
+    depends_on:
+      - mysqlservice
+networks:
+  mynetwork1:
+    driver: bridge
